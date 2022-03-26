@@ -12,8 +12,15 @@
 </script>
 <script>
 // @ts-nocheck
-  const title = "Index"
-  export let data
+import { onMount } from "svelte";
+import {userName, fruits} from "../stores"
+
+const title = "Index"
+export let data
+
+onMount(() => {
+  $fruits = [...$fruits, "pineapple"]
+})
 </script>
 
 <style lang="scss">
@@ -27,7 +34,11 @@
 
 <div class="box">
   <h1 class="title">{title}</h1>
-
+</div>
+<div>
+  input : <input type="text" bind:value={$userName}> <br>
+  output : {$userName} <br>
+  fruits : {$fruits}
 </div>
 
 {JSON.stringify(data)}
